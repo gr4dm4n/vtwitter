@@ -73,7 +73,7 @@ class vtwitter{
 
 		$tweets_info = json_decode($tweets_info);
 	
-		if( !is_array($tweets_info) || count($tweets_info) == 1 ){
+		if( !is_array($tweets_info) || count($tweets_info) < 2 ){
 			
 				$list .= '<li>No hay tweets disponibles</li>'; //si no se puede obtener la información de los tweets
 			
