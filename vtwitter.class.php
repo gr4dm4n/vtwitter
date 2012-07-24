@@ -1,11 +1,17 @@
 <?php
+/**
+ * VIANCH Twitter Class
+ *
+ * @author Victor Chavarro {@link http://www.vianch.com Victor Chavarro (victor@vianch.com)}
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ */
 define("TWITTER_TIMELINE_URL", "https://api.twitter.com/1/statuses/user_timeline.json"); //url del request del timeline, retorna json con la información
 define("TWITTER_AVATAR_URL", "http://twitter.com/api/users/profile_image/");
 define("CACHE_TIMEOUT", 60*5); //tiempo de cacheo de la base de datos, es cada 5 minutos 
 
 class vtwitter{
-
-	public $vt_opts;
+	
+	/*Propiedades para el funcionamiento de la aplicación*/
 	private $vt_properties; 
 
 	/**
@@ -62,6 +68,7 @@ class vtwitter{
 	/**
 	 * Genera la lista en html de la cantidad de tweets que se especificaron en los parámetros,
 	 * retorna un string con el html formateado
+	 * @see vtwitter_printer();
 	 * @return string;
 	 */
 	private function generate_tweet_list(){
@@ -109,7 +116,8 @@ class vtwitter{
 
 
 	/**
-	 *  imprime el html formateado de los tweets
+	 * imprime el html formateado de los tweets
+	 * @see generate_tweet_list;
 	 */
 	public function vtwitter_printer(){
 		echo $this->generate_tweet_list();
@@ -117,6 +125,7 @@ class vtwitter{
 
     /**
      * Determines the difference between two timestamps.
+	 * Función tomada del core de wordpress para el funcionamiento fuera de el
      */
 	public function human_time_diff( $from, $to = '' ) {
 		        if ( empty($to) )
